@@ -1,0 +1,198 @@
+{
+  "user_id": 123,
+  "email": null,
+  "name": null,
+  "profile_picture": null,
+  "role": null,
+  "is_active": true,
+  "created_at": "2025-01-01T10:00:00",
+  "training_days": [1, 3, 5], //0-6 days of the week
+  "responses": 
+    {
+      "fitness_questionnaire": {
+        "daily_movement": "between_30_60_min", //values:  'less_than_30_min','between_30_60_min','more_than_60_min'
+        "exercise_frequency": "1_2_times_regular", //values:  'never','1_2_times_irregular','1_2_times_regular','3_plus_times'
+        "exercise_knowledge": "can_do_safely", //values:  'no_idea','tried_need_guidance','can_do_safely','autonomous'
+        "age": 42,
+        "medical_conditions": "one_condition", //values:  'none','one_condition','multiple_complex'
+        "physical_condition": "overweight_no_limits", //values:  'normal_weight_no_limits','overweight_no_limits','body_limits_me'
+      },
+      "diabetes_questionnaire": {
+        "diabetes_type": "type_2", //values:  'type_1','type_2','prediabetes', 'no_diabetes'
+        "body_pain_areas": ["right_knee", "lower_back"],
+        "training_materials": [1, 2, 3], //Materials Ids mapping keys can be sent as well
+        "training_time": "morning", //values:   'early_morning', 'mid_morning','afternoon','evening','varies',
+        "has_cgm": "yes", //if user uses a glucose monitor
+        "has_insulin_pump": "no", //if user uses an insulin pump
+        "hba1c": 7.2 //most recent glycated hemoglobin (HbA1c) value
+      },
+      "user_data_questionnaire": {
+        "gender": "female",
+        "height": 165, //height in cm
+        "weight": 72, //weight in kg
+      }
+    },
+  "subscription_status": "active",
+  "mesocycles": [
+    {
+      "id": 456,
+      "mesocycle_type_id": 10,
+      "start_date": "2025-01-15",
+      "end_date": "2025-02-15",
+      "is_current": true, //if the mesocycle is the current mesocycle, false otherwise
+      "sessions": [
+        {
+          "id": 789,
+          "session_type_id": 20,
+          "name": "Upper Body Strength",
+          "scheduled_date": "2025-01-16",
+          "completed_date": "2025-01-16",
+          "time_between_exercises": 60,
+          "order_index": 0,
+          "exercises": [
+            {
+              "id": 1001,
+              "exercise": {
+                "id": 50,
+                "name": "Push-ups",
+                "category": "Upper Body",
+                "pattern": "Push",
+                "level": 2, //Level of the exercise
+                "picture_url": "https://storage.googleapis.com/bucket/pushups.jpg",
+                "is_time_based": false, //if exercise is timebased
+                "has_repetition": true //if exercise has sets and reps
+              },
+              "is_time_based": false,
+              "has_repetition": true,
+              "sets": 3,
+              "reps": 12,
+              "duration": null,
+              "order_index": 0,
+              "completed": true
+            }
+          ],
+          "circuits": [
+            {
+              "id": 2001,
+              "name": "Core Circuit",
+              "sets": 3,
+              "rest_time": 90,
+              "order_index": 1,
+              "completed": true,
+              "exercises": [
+                {
+                  "id": 1002,
+                  "exercise": {
+                    "id": 51,
+                    "name": "Plank",
+                    "category": "Core",
+                    "pattern": "Isometric",
+                    "level": 1,
+                    "picture_url": "https://storage.googleapis.com/bucket/plank.jpg",
+                    "is_time_based": true,
+                    "has_repetition": false
+                  },
+                  "is_time_based": true,
+                  "has_repetition": false,
+                  "sets": null,
+                  "reps": null,
+                  "duration": 30,
+                  "order_index": 0,
+                  "completed": true
+                },
+                {
+                  "id": 1003,
+                  "exercise": {
+                    "id": 52,
+                    "name": "Russian Twists",
+                    "category": "Core",
+                    "pattern": "Rotation",
+                    "level": 2,
+                    "picture_url": "https://storage.googleapis.com/bucket/russian_twists.jpg",
+                    "is_time_based": false,
+                    "has_repetition": true
+                  },
+                  "is_time_based": false,
+                  "has_repetition": true,
+                  "sets": null,
+                  "reps": 20,
+                  "duration": null,
+                  "order_index": 1,
+                  "completed": true
+                }
+              ]
+            }
+          ],
+          "glucose_records": [
+            {
+                "id": 4,
+                "user_id": 1,
+                "glucose_level": 95.0,
+                "session_id": 1, //can be null if glucose level was tracked outside of session. in this case glucose record are in "unattached_glucose_records" attribute below.
+                "measurement_timing": "during", // before,during, after. Can be several with measurement_timing "during" if user has record glucose during session in different timings. measurement_timing can be null if glucose level was tracked outside of session.
+                "custom_exercise": null, //key for custom exercise
+                "recorded_at": "2025-10-14T08:35:36.062835Z",
+                "created_at": "2025-10-14T08:35:36.060969Z",
+                "updated_at": null
+            },
+            {
+                "id": 3,
+                "user_id": 1,
+                "glucose_level": 125.0,
+                "session_id": 1,
+                "measurement_timing": "after",
+                "custom_exercise": null,
+                "notes": "Measured after completing push-ups set",
+                "recorded_at": "2025-10-14T08:35:26.001351Z",
+                "created_at": "2025-10-14T08:35:25.999324Z",
+                "updated_at": null
+            },
+            {
+                "id": 2,
+                "user_id": 1,
+                "glucose_level": 95.0,
+                "session_id": 1,
+                "measurement_timing": "before",
+                "custom_exercise": null,
+                "notes": "Measured after completing push-ups set",
+                "recorded_at": "2025-10-14T08:35:21.995576Z",
+                "created_at": "2025-10-14T08:35:21.992955Z",
+                "updated_at": null
+            }
+          
+        ],
+          "session_report": {
+            "id": 1,
+            "session_id": 1,
+            "user_id": 1,
+            "effort_level": 8, //effort_level 1-10 scale user has selected
+            "pain_level": 3, //pain_level 1-10 scale user has selected
+            "pain_area": "lower_back", //pain_area can be null
+            "comment": "Good workout but felt some discomfort in lower back during deadlifts",
+            "completed_at": "2025-10-13T12:51:41.292362Z",
+            "regression_exercise_ids": [1, 2, 3], //exercise ids made easier
+            "progression_exercise_ids": [4, 5, 6] //exercise ids made harder
+          }
+        }
+      ]
+    }
+  ],
+  "unattached_glucose_records": [
+    {
+      "id": 3003,
+      "glucose_level": 95.0,
+      "measurement_timing": null,
+      "custom_exercise": "Morning walk",
+      "notes": "30 minute walk in the park",
+      "recorded_at": "2025-01-17T07:00:00"
+    },
+    {
+      "id": 3004,
+      "glucose_level": 118.0,
+      "measurement_timing": null,
+      "custom_exercise": null,
+      "notes": "Random check during day",
+      "recorded_at": "2025-01-18T14:30:00"
+    }
+  ]
+}
