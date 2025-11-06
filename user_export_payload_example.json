@@ -3,8 +3,6 @@
   "email": null,
   "name": null,
   "profile_picture": null,
-  "role": null,
-  "is_active": true,
   "created_at": "22025-10-14T08:35:36.062835Z",
   "training_days": [1, 3, 5], //0-6 days of the week
   "responses": 
@@ -40,7 +38,7 @@
       "start_date": "2025-01-15",
       "end_date": "2025-02-15",
       "is_current": true, //if the mesocycle is the current mesocycle, false otherwise
-      "sessions": [
+      "sessions": [ //List of sessions, can be several depending on the number of days the user selects to train. 
         {
           "id": 789,
           "session_type_id": 20,
@@ -245,5 +243,7 @@
       "measurement_timing": null, //can be: "begin", "during", "after"
       "extra_exercise_id": 2,  //[Optional] id of the extra exercise. This is an exercise not from the mesocycle, but outside an extra one from a list.
       "notes": "30 minute walk in the park",
-      "recorded_at": "2025-01-17T07:00:00"
+      "recorded_at": "2025-01-17T07:00:00",
+      "feedback_good": true, //[Optional] when an alert after glucose is taken. User can mark it as good or bad.
+      "feedback_bad": true //[Optional] when an alert after glucose is taken. User can mark it as good or bad.
     },
