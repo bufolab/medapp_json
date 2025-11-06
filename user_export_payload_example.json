@@ -5,7 +5,7 @@
   "profile_picture": null,
   "role": null,
   "is_active": true,
-  "created_at": "2025-01-01T10:00:00",
+  "created_at": "22025-10-14T08:35:36.062835Z",
   "training_days": [1, 3, 5], //0-6 days of the week
   "responses": 
     {
@@ -45,14 +45,14 @@
           "id": 789,
           "session_type_id": 20,
           "name": "Upper Body Strength",
-          "scheduled_date": "2025-01-16",
-          "completed_date": "2025-01-16",
+          "scheduled_date": "22025-10-14T08:35:36.062835Z", //hours are irrelevant here
+          "completed_date": "22025-10-14T08:35:36.062835Z",
           "time_between_exercises": 60,
           "order_index": 0,
           "exercises": [
-            {
+            { //Exercise model
               "id": 1001,
-              "exercise": {
+              "exercise": { //Exercise model
                 "id": 50,
                 "name": "Push-ups",
                 "category": "Upper Body",
@@ -68,17 +68,18 @@
               "reps": 12,
               "duration": null,
               "order_index": 0,
-              "completed": true
+              "needs_progression":true, //true if needs to use the progreession exercise
+              "needs_regression":true, //true if needs to use the regression exercise
+              "needs_pain_replacement":true, //true if needs to use the replacement exercise
             }
           ],
-          "circuits": [
+          "circuits": [  //A circuit is a list of Exercises Model, repeted "sets" times
             {
               "id": 2001,
               "name": "Core Circuit",
               "sets": 3,
               "rest_time": 90,
               "order_index": 1,
-              "completed": true,
               "exercises": [
                 {
                   "id": 1002,
@@ -98,7 +99,6 @@
                   "reps": null,
                   "duration": 30,
                   "order_index": 0,
-                  "completed": true
                 },
                 {
                   "id": 1003,
@@ -118,7 +118,6 @@
                   "reps": 20,
                   "duration": null,
                   "order_index": 1,
-                  "completed": true
                 }
               ]
             }
@@ -178,11 +177,12 @@
     }
   ],
   "unattached_glucose_records": [
-    {
+    { //Glucose Model Record
       "id": 3003,
       "glucose_level": 95.0,
       "measurement_timing": null,
       "custom_exercise": "Morning walk",
+      "extra_exercise_id": 2, 
       "notes": "30 minute walk in the park",
       "recorded_at": "2025-01-17T07:00:00"
     },
@@ -196,3 +196,54 @@
     }
   ]
 }
+
+//Exercise model
+  { 
+          "id": 1001,
+          "exercise": { //Exercise model
+            "id": 50,
+            "name": "Push-ups",
+            "category": "Upper Body",
+            "pattern": "Push",
+            "level": 2, //Level of the exercise
+            "picture_url": "https://storage.googleapis.com/bucket/pushups.jpg",
+            "is_time_based": false, //if exercise is timebased
+            "has_repetition": true //if exercise has sets and reps
+          },
+          "is_time_based": false,
+          "has_repetition": true,
+          "sets": 3,
+          "reps": 12,
+          "duration": null, //only filled when is_time_based true. Represents duration of the exercise in seconds
+          "order_index": 0,
+          "needs_progression":true, //[Optional] true if needs to use the progreession exercise
+          "needs_regression":true, //[Optional] true if needs to use the regression exercise
+          "needs_pain_replacement":true, //[Optional] true if needs to use the replacement exercise
+        }
+
+
+//Session Report Model
+{
+    "id": 1,
+    "session_id": 1,
+    "user_id": 1,
+    "effort_level": 8, //effort_level 1-10 scale user has selected
+    "pain_level": 3, //pain_level 1-10 scale user has selected
+    "pain_area": "lower_back", //pain_area can be null
+    "comment": "Good workout but felt some discomfort in lower back during deadlifts", //[Optional] comments
+    "completed_at": "2025-10-13T12:51:41.292362Z",
+    "regression_exercise_ids": [1, 2, 3], //[Optional] exercise ids made easier. User selected the esier version of this exercise
+    "progression_exercise_ids": [4, 5, 6] //[Optional] exercise ids made harder. User selected the harder version of this exercise
+  }
+
+
+//Glucose Model Record
+   { 
+      "id": 3003,
+      "glucose_level": 95.0,
+      "session_id": 2, //[Optional] Id of he session that during this glucose was taken. 
+      "measurement_timing": null, //can be: "begin", "during", "after"
+      "extra_exercise_id": 2,  //[Optional] id of the extra exercise. This is an exercise not from the mesocycle, but outside an extra one from a list.
+      "notes": "30 minute walk in the park",
+      "recorded_at": "2025-01-17T07:00:00"
+    },
