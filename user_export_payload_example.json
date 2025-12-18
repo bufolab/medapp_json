@@ -5,30 +5,19 @@
   "profile_picture": null,
   "created_at": "22025-10-14T08:35:36.062835Z",
   "training_days": [1, 3, 5], //0-6 days of the week
-  "responses": 
+  "responses":  
     {
-      "fitness_questionnaire": {
         "daily_movement": "between_30_60_min", //values:  'less_than_30_min','between_30_60_min','more_than_60_min'
         "exercise_frequency": "1_2_times_regular", //values:  'never','1_2_times_irregular','1_2_times_regular','3_plus_times'
-        "exercise_knowledge": "can_do_safely", //values:  'no_idea','tried_need_guidance','can_do_safely','autonomous'
         "age": 42,
+        "height_cm": 170,//height in cm
+        "weight_kg": 70, //weight in kg
         "medical_conditions": "one_condition", //values:  'none','one_condition','multiple_complex'
-        "physical_condition": "overweight_no_limits", //values:  'normal_weight_no_limits','overweight_no_limits','body_limits_me'
-      },
-      "diabetes_questionnaire": {
         "diabetes_type": "type_2", //values:  'type_1','type_2','prediabetes', 'no_diabetes'
         "body_pain_areas": ["right_knee", "lower_back"],
         "training_materials": [1, 2, 3], //Materials Ids mapping keys can be sent as well
-        "training_time": "morning", //values:   'early_morning', 'mid_morning','afternoon','evening','varies',
-        "has_cgm": "yes", //if user uses a glucose monitor
         "has_insulin_pump": "no", //if user uses an insulin pump
         "hba1c": 7.2 //most recent glycated hemoglobin (HbA1c) value
-      },
-      "user_data_questionnaire": {
-        "gender": "female",
-        "height": 165, //height in cm
-        "weight": 72, //weight in kg
-      }
     },
   "subscription_status": "active",
   "mesocycles": [
